@@ -4,12 +4,14 @@ import com.abdellatif.BackExample.Data.Developer;
 import com.abdellatif.BackExample.Service.DeveloperService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.UUID;
 
-@RequestMapping("developer")
+@RequestMapping("developers")
 @RestController
 public class DeveloperController {
 
@@ -24,5 +26,11 @@ public class DeveloperController {
     public List<Developer> GetAll()
     {
         return developerService.GetAll();
+    }
+
+    @GetMapping(path = "{id}")
+    public Developer GetDeveloperByID(@PathVariable("id") UUID id)
+    {
+        return developerService.GetDeveloperByID(id).orElse(null);
     }
 }

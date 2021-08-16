@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Repository("defaultAccess")
@@ -18,5 +19,10 @@ public class DeveloperAccessService implements DeveloperAccess{
     @Override
     public List<Developer> GetAll() {
         return DB;
+    }
+
+    @Override
+    public Optional<Developer> GetDeveloperByID(UUID id) {
+        return DB.stream().filter(developer -> developer.getId().equals(id)).findFirst();
     }
 }

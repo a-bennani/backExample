@@ -16,7 +16,7 @@ public class Developer {
         this.lName = lName;
     }
 
-  /*  public UUID getId() {
+    public UUID getId() {
         return id;
     }
 
@@ -26,5 +26,5 @@ public class Developer {
 
     public String getlName() {
         return lName;
-    }*/
+    }
 }

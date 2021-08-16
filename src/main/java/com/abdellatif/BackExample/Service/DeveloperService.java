@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class DeveloperService {
@@ -20,6 +22,10 @@ public class DeveloperService {
 
     public List<Developer> GetAll(){
         return this.developerAccess.GetAll();
+    }
+
+    public Optional<Developer> GetDeveloperByID(UUID id){
+        return this.developerAccess.GetDeveloperByID(id);
     }
 
 }
