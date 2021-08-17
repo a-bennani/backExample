@@ -3,10 +3,8 @@ package com.abdellatif.BackExample.Controller;
 import com.abdellatif.BackExample.Data.Developer;
 import com.abdellatif.BackExample.Service.DeveloperService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.UUID;
@@ -22,6 +20,12 @@ public class DeveloperController {
         this.developerService = developerService;
     }
 
+    @PostMapping
+    public void  AddDeveloper(@RequestBody Developer developer)
+    {
+        developerService.AddDeveloper(developer);
+    }
+
     @GetMapping
     public List<Developer> GetAll()
     {
@@ -33,4 +37,10 @@ public class DeveloperController {
     {
         return developerService.GetDeveloperByID(id).orElse(null);
     }
+
+    @PutMapping(path = "{id}")
+    public void UpdateDeveloper(@PathVariable("id") UUID id, @RequestBody Developer developer) {
+        developerService.UpdateDeveloper(id, developer);
+    }
+
 }

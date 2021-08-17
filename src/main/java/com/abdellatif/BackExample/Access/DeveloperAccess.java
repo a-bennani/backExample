@@ -13,4 +13,13 @@ public interface DeveloperAccess {
 
     Optional<Developer> GetDeveloperByID(UUID id);
 
+    int InsertDeveloper(UUID id, Developer developer);
+
+    default int InsertDeveloper(Developer developer)
+    {
+        UUID id = UUID.randomUUID();
+        return InsertDeveloper(id, developer);
+    };
+
+    int UpdateDeveloper(UUID id, Developer developer);
 }

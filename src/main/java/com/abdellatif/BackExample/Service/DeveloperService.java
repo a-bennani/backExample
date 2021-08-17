@@ -28,4 +28,12 @@ public class DeveloperService {
         return this.developerAccess.GetDeveloperByID(id);
     }
 
+    public int AddDeveloper(Developer developer) {
+        return developerAccess.InsertDeveloper(developer);
+    }
+
+    public int UpdateDeveloper(UUID id, Developer developer) {
+        return developerAccess.UpdateDeveloper(id, developer);
+    }
+
 }
